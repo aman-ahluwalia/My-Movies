@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Movies App</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_details_avtivity">DetailsActivity</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="title_activity_grid_image_adapter">gridImageAdapter</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!--pref_general.xml-->
+    <string name="pref_sort_label">Sorting scheme</string>
+    <string name="pref_sort_key">sort</string>
+
+    <!--arrays.xml-->
+    <string name="pref_sort_label_popular">Popularity</string>
+    <string name="pref_sort_popular">popularity.desc</string>
+
+    <string name="pref_sort_label_rating">Ratings</string>
+    <string name="pref_sort_rating">vote_count.desc</string>
+</resources>
