@@ -7,4 +7,20 @@
     <dimen name="columnWidthValue">90dp</dimen>
     <dimen name="horizontalSpacingValue">10dp</dimen>
     <dimen name="verticalSpacingValue">10dp</dimen>
+
+    <!--layout fragment_details.xml-->
+    <dimen name="imageMarginTop">10dp</dimen>
+    <dimen name="imageMarginLeft">20dp</dimen>
+    <dimen name="titleMarginTop">10dp</dimen>
+    <dimen name="synopsisMarginTop">5dp</dimen>
+    <dimen name="userRatingMarginTop">5dp</dimen>
+    <dimen name="releaseYearMarginTop">5dp</dimen>
+
+    <!--layout-land fragmnet_details.xml-->
+    <dimen name="landImageMarginTop">10dp</dimen>
+    <dimen name="landImageMarginLeft">20dp</dimen>
+    <dimen name="landTitleMarginTop">10dp</dimen>
+    <dimen name="landSynopsisMarginTop">5dp</dimen>
+    <dimen name="landUserRatingMarginTop">5dp</dimen>
+    <dimen name="landReleaseYearMarginTop">5dp</dimen>
 </resources>
