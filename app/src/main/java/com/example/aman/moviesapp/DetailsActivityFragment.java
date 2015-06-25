@@ -81,6 +81,47 @@ public class DetailsActivityFragment extends Fragment {
         return rootView;
     }
 
+    public int updateAfterAsync() {
+        final RelativeLayout relativeLayoutBackdrop = (RelativeLayout) rootView.findViewById(R.id.fragment_detail_back);
+        Picasso.with(getActivity()).load(backdrop).into(new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                int sdk = android.os.Build.VERSION.SDK_INT;
+                if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                    relativeLayoutBackdrop.setBackgroundDrawable(new BitmapDrawable(bitmap));
+                } else {
+                    relativeLayoutBackdrop.setBackground(new BitmapDrawable(getResources(), bitmap));
+                }
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+                Toast.makeText(getActivity(), "Failed Loading", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+                Toast.makeText(getActivity(), "Start Loading", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ImageView imageViewPoster = (ImageView) rootView.findViewById(R.id.imageView);
+        Picasso.with(getActivity()).load(poster).into(imageViewPoster);
+
+        TextView textViewName = (TextView) rootView.findViewById(R.id.title);
+        textViewName.setText(name);
+
+        TextView textViewSynopsis = (TextView) rootView.findViewById(R.id.synopsis);
+        textViewSynopsis.setText(synopsis);
+
+        TextView textViewPopularity = (TextView) rootView.findViewById(R.id.rating_value);
+        textViewPopularity.setText(popularity);
+
+        TextView textViewDate = (TextView) rootView.findViewById(R.id.release_year_value);
+        textViewDate.setText(releaseDate);
+        return 0;
+    }
+
     private class FetchMovie extends AsyncTask<String, Void, Void> {
 
         private int getMovieDataFromJson(String movieJsonStr)
@@ -195,44 +236,7 @@ public class DetailsActivityFragment extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-
-            final RelativeLayout relativeLayoutBackdrop = (RelativeLayout) rootView.findViewById(R.id.fragment_detail_back);
-            Picasso.with(getActivity()).load(backdrop).into(new Target() {
-                @Override
-                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                    int sdk = android.os.Build.VERSION.SDK_INT;
-                    if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                        relativeLayoutBackdrop.setBackgroundDrawable(new BitmapDrawable(bitmap));
-                    } else {
-                        relativeLayoutBackdrop.setBackground(new BitmapDrawable(getResources(), bitmap));
-                    }
-                }
-
-                @Override
-                public void onBitmapFailed(Drawable errorDrawable) {
-                    Toast.makeText(getActivity(), "Failed Loading", Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onPrepareLoad(Drawable placeHolderDrawable) {
-                    Toast.makeText(getActivity(), "Start Loading", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-            ImageView imageViewPoster = (ImageView) rootView.findViewById(R.id.imageView);
-            Picasso.with(getActivity()).load(poster).into(imageViewPoster);
-
-            TextView textViewName = (TextView) rootView.findViewById(R.id.title);
-            textViewName.setText(name);
-
-            TextView textViewSynopsis = (TextView) rootView.findViewById(R.id.synopsis);
-            textViewSynopsis.setText(synopsis);
-
-            TextView textViewPopularity = (TextView) rootView.findViewById(R.id.rating_value);
-            textViewPopularity.setText(popularity);
-
-            TextView textViewDate = (TextView) rootView.findViewById(R.id.release_year_value);
-            textViewDate.setText(releaseDate);
+            updateAfterAsync();
         }
     }
 }
