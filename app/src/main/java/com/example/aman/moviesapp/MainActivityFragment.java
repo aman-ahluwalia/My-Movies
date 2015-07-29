@@ -42,7 +42,7 @@ public class MainActivityFragment extends Fragment {
 
     //Constants for the value field for movie api
     //final String MOST_POPULAR = "popularity.desc";
-    final String MY_KEY = "88a4d266df2378ba4d48f78c4c8e0a48";
+    final String MY_KEY = "TO BE INSERTED BY USER";
 
     public MainActivityFragment() {
     }
